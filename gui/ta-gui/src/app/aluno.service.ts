@@ -5,6 +5,7 @@ import { Aluno } from './aluno';
 @Injectable()
 export class AlunoService {
   alunos: Aluno[] = [];
+
   criar(aluno: Aluno): Aluno {
     aluno = aluno.clone();
     var result = null;
@@ -16,14 +17,15 @@ export class AlunoService {
   }
 
   cpfNaoCadastrado(cpf: string): boolean {
-    return !this.alunos.find(a => a.cpf == cpf);
- }
- atualizar(aluno:Aluno): void {
-  aluno = aluno.clone();
-  for (let a of this.alunos) {
-      if (a.cpf == aluno.cpf) {
-         a.metas = aluno.metas;
-      }
+     return !this.alunos.find(a => a.cpf == cpf);
   }
-}
+
+  atualizar(aluno:Aluno): void {
+    aluno = aluno.clone();
+    for (let a of this.alunos) {
+        if (a.cpf == aluno.cpf) {
+           a.metas = aluno.metas;
+        }
+    }
+  }
 }
