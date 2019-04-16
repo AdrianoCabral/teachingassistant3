@@ -13,7 +13,6 @@ export class Aluno {
     this.nome = "";
     this.cpf = "";
     this.email = "";
-    this.githubLogin = "";
     this.metas = new Map<string,string>();
   }
 
@@ -22,7 +21,7 @@ export class Aluno {
     aluno.nome = this.nome;
     aluno.cpf = this.cpf;
     aluno.email = this.email;
-    aluno.githubLogin = this.githubLogin
+    aluno.githubLogin = this.githubLogin;
     aluno.metas = this.cloneMetas();
     return aluno;
   }
