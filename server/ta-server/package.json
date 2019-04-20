@@ -9,6 +9,7 @@
   "author": "Paulo Borba",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.15.4"
   },
   "devDependencies": {}

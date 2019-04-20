@@ -1,33 +1,35 @@
 "use strict";
-exports.__esModule = true;
-var Aluno = /** @class */ (function () {
-    function Aluno() {
+Object.defineProperty(exports, "__esModule", { value: true });
+class Aluno {
+    constructor() {
         this.clean();
     }
-    Aluno.prototype.clean = function () {
+    clean() {
         this.nome = "";
         this.cpf = "";
         this.email = "";
+        this.githubLogin = "";
         this.metas = new Map();
-    };
-    Aluno.prototype.clone = function () {
+    }
+    clone() {
         var aluno = new Aluno();
         aluno.metas = new Map();
         aluno.copyFrom(this);
         return aluno;
-    };
-    Aluno.prototype.copyFrom = function (from) {
+    }
+    copyFrom(from) {
         this.nome = from.nome;
         this.cpf = from.cpf;
         this.email = from.email;
+        this.githubLogin = from.githubLogin;
         this.copyMetasFrom(from.metas);
-    };
-    Aluno.prototype.copyMetasFrom = function (from) {
+    }
+    copyMetasFrom(from) {
         this.metas = new Map();
-        for (var key in from) {
+        for (let key in from) {
             this.metas[key] = from[key];
         }
-    };
-    return Aluno;
-}());
+    }
+}
 exports.Aluno = Aluno;
+//# sourceMappingURL=aluno.js.map

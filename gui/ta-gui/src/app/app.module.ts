@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MetasComponent } from './metas.component';
 import { AlunosComponent } from './alunos.component';
 import { AlunoService } from './aluno.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AlunoService } from './aluno.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot([
       {
         path: 'metas',

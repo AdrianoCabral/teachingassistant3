@@ -5,15 +5,22 @@ const bodyParser = require("body-parser");
 const cadastrodealunos_1 = require("./cadastrodealunos");
 var app = express();
 exports.app = app;
-var alunos = new cadastrodealunos_1.CadastroDeAlunos();
+var cadastro = new cadastrodealunos_1.CadastroDeAlunos();
+var allowCrossDomain = function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+};
+app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.get('/alunos', function (req, res) {
-    var aluno = JSON.stringify(alunos.getAlunos());
-    res.send(aluno);
+    console.log('GET /alunos: ' + req);
+    res.send(JSON.stringify(cadastro.getAlunos()));
 });
 app.post('/aluno', function (req, res) {
-    var aluno = req.body;
-    aluno = alunos.criar(aluno);
+    var aluno = req.body; //verificar se é mesmo Aluno!
+    aluno = cadastro.criar(aluno);
     if (aluno) {
         res.send({ "success": "O aluno foi cadastrado com sucesso" });
     }
@@ -23,7 +30,7 @@ app.post('/aluno', function (req, res) {
 });
 app.put('/aluno', function (req, res) {
     var aluno = req.body;
-    aluno = alunos.atualizar(aluno);
+    aluno = cadastro.atualizar(aluno);
     if (aluno) {
         res.send({ "success": "O aluno foi atualizado com sucesso" });
     }
@@ -31,7 +38,17 @@ app.put('/aluno', function (req, res) {
         res.send({ "failure": "O aluno não pode ser atualizado" });
     }
 });
+
+app.delete('/aluno', function (req, res){
+    var aluno = req.body;
+    aluno = cadastro.remover(aluno);
+    if(aluno) {
+      res.send({"sucess": "O aluno foi removido com sucesso"});
+    } else {
+      res.send({"failure": "O aluno não pode ser removido"});
+    }
+  });
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
-//# sourceMappingURL=ta-server.js.map 
+//# sourceMappingURL=ta-server.js.map

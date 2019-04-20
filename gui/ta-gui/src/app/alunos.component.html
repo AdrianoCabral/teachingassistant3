@@ -5,12 +5,16 @@
    <td><label>Nome </label></td>
    <td><input [(ngModel)]="aluno.nome" ></td>
    <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
+   <td><button (click)="removerAluno(aluno)">Remover</button></td>
 </tr>
 <tr>
    <td><label>CPF </label></td>
    <td><input [(ngModel)]="aluno.cpf" ></td>
-   <td *ngIf="cpfduplicado">
-     Já existe um aluno com esse CPF
+   <td *ngIf="cpfduplicado || githubLoginDuplicado">
+     Já existe um aluno com esse CPF ou Login github
+   </td>
+   <td *ngIf="cpfNaoCadastrado">
+      Não existe um aluno com esse CPF
    </td>
 </tr>
 <tr>
