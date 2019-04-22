@@ -15,7 +15,6 @@ var allowCrossDomain = function (req, res, next) {
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.get('/alunos', function (req, res) {
-    console.log('GET /alunos: ' + req);
     res.send(JSON.stringify(cadastro.getAlunos()));
 });
 app.post('/aluno', function (req, res) {
@@ -38,16 +37,16 @@ app.put('/aluno', function (req, res) {
         res.send({ "failure": "O aluno não pode ser atualizado" });
     }
 });
-
-app.delete('/aluno', function (req, res){
+app.put('/alunoDelete', function (req, res) {
     var aluno = req.body;
     aluno = cadastro.remover(aluno);
-    if(aluno) {
-      res.send({"sucess": "O aluno foi removido com sucesso"});
-    } else {
-      res.send({"failure": "O aluno não pode ser removido"});
+    if (aluno) {
+        res.send({ "success": "O aluno foi deletado com sucesso" });
     }
-  });
+    else {
+        res.send({ "failure": "O aluno não pode ser deletado" });
+    }
+});
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });

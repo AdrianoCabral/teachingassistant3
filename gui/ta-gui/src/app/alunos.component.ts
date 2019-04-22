@@ -20,7 +20,6 @@ export class AlunosComponent implements OnInit {
      this.alunoService.criar(a)
         .then(ab => {
            if (ab) {
-              console.log(ab);
               this.alunos.push(ab);
               this.aluno = new Aluno();
            } else {
@@ -32,15 +31,13 @@ export class AlunosComponent implements OnInit {
    }
    removerAluno(a: Aluno): void {
       this.alunoService.remover(a)
-      .then(ad =>{
-         if (ad) {
-            console.log(ad);
-            var i = this.alunos.findIndex(c => c.cpf == ad.cpf);
-            this.alunos.splice(i, 1);
-         } else {
-            this.cpfNaoCadastrado = true;
+      .then(ab => {
+         if (ab) {
+            var result: Aluno = this.alunos.find(k => k.cpf == a.cpf);
+            this.alunos.splice(this.alunos.indexOf(result), 1);
          }
       })
+      .catch(erro => alert(erro));
    }
 
    onMove(): void {

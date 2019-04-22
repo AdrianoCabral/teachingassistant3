@@ -42,15 +42,18 @@ app.put('/aluno', function (req: express.Request, res: express.Response) {
   }
 })
 
-app.delete('/aluno', function (req: express.Request, res: express.Response){
+
+app.put('/alunoDelete', function (req: express.Request, res: express.Response) {
   var aluno: Aluno = <Aluno> req.body;
   aluno = cadastro.remover(aluno);
-  if(aluno) {
-    res.send({"sucess": "O aluno foi removido com sucesso"});
+  if (aluno) {
+    res.send({"success": "O aluno foi deletado com sucesso"});
   } else {
-    res.send({"failure": "O aluno não pode ser removido"});
+    res.send({"failure": "O aluno não pode ser deletado"});
   }
 })
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

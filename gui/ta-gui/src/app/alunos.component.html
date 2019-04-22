@@ -5,7 +5,6 @@
    <td><label>Nome </label></td>
    <td><input [(ngModel)]="aluno.nome" ></td>
    <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
-   <td><button (click)="removerAluno(aluno)">Remover</button></td>
 </tr>
 <tr>
    <td><label>CPF </label></td>
@@ -39,6 +38,7 @@
    <td>{{a.cpf}}</td>
    <td>{{a.email}}</td>
    <td>{{a.githubLogin}}</td>
+   <td><button (click)="removerAluno(a)">Remover</button></td>
 </tr>
 </table>
 

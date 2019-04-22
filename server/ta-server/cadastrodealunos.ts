@@ -12,12 +12,9 @@ export class CadastroDeAlunos {
     }
     return result;
   }
-remover(aluno: Aluno): Aluno{
-    var index = this.alunos.findIndex(a => a.cpf == aluno.cpf);
-    var result = this.alunos[index];
-    if(result){
-      this.alunos.splice(index, 1);
-    }
+  remover(aluno: Aluno): Aluno {
+    var result: Aluno = this.alunos.find(a => a.cpf == aluno.cpf);
+    if (result) this.alunos.splice(this.alunos.indexOf(result), 1);
     return result;
   }
   cpfNaoCadastrado(cpf: string): boolean {

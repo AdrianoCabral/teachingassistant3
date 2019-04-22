@@ -31,7 +31,7 @@ export class AlunoService {
   }
 
   remover(aluno: Aluno): Promise<Aluno> {
-    return this.http.delete(this.taURL + aluno.cpf,JSON.stringify(aluno))
+    return this.http.put(this.taURL + "/alunoDelete",JSON.stringify(aluno), {headers: this.headers})
          .toPromise()
          .then(res => {
             if (res.json().success) {return aluno;} else {return null;}
