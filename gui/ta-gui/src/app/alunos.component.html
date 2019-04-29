@@ -3,12 +3,12 @@
 <table>
 <tr>
    <td><label>Nome </label></td>
-   <td><input [(ngModel)]="aluno.nome" ></td>
+   <td><input [(ngModel)]="aluno.nome" name="namebox"></td>
    <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
 </tr>
 <tr>
    <td><label>CPF </label></td>
-   <td><input [(ngModel)]="aluno.cpf" ></td>
+   <td><input [(ngModel)]="aluno.cpf" name="cpfbox"></td>
    <td *ngIf="cpfduplicado || githubLoginDuplicado">
      Já existe um aluno com esse CPF ou Login github
    </td>
@@ -34,8 +34,8 @@
    <th>githubLogin</th>
 </tr>
 <tr *ngFor="let a of alunos">
-   <td>{{a.nome}}</td>
-   <td>{{a.cpf}}</td>
+   <td name="nomelist">{{a.nome}}</td>
+   <td name="cpflist">{{a.cpf}}</td>
    <td>{{a.email}}</td>
    <td>{{a.githubLogin}}</td>
    <td><button (click)="removerAluno(a)">Remover</button></td>
